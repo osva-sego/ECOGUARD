@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!--
+    Tema del sitio: <Contaminación Ambiental>
+
+    Este archivo es una página secundaria con información ampliada.
+    Interacciones implementadas:
+    - Navegación entre páginas (link a index.html).
+    - Smooth scroll para anclas internas.
+    - Uso de semantic HTML y accesibilidad.
+    
+    Limitaciones:
+    - Contenido dinámico (p. ej. listado de noticias) requeriría JS o backend.
+  -->
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sobre EcoGuard</title>
+  <meta name="description" content="Sobre EcoGuard - Sitio web sobre <Contaminación Ambiental>. Misión, visión y equipo.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-topic="<Contaminación Ambiental>">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="EcoGuard - Inicio">
+        <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#0b6b4f"/><stop offset="1" stop-color="#2aa876"/></linearGradient></defs>
+          <circle cx="12" cy="12" r="10" fill="url(#g2)"></circle>
+          <path d="M7 13c1-3 5-5 7-6 0 0-1 4-3 6-2 2-4 1-4 0z" fill="#fff" opacity="0.95"></path>
+        </svg>
+        <span class="brand">EcoGuard</span>
+      </a>
+
+            <nav class="main-nav" role="navigation" aria-label="Menú principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="about.html" class="active" aria-current="page">Sobre</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#testimonios">Testimonios</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="site-main container">
+    <section aria-labelledby="about-h1">
+      <h1 id="about-h1">Sobre EcoGuard</h1>
+      <p class="lead"><strong>&lt;Contaminación Ambiental&gt;</strong> — Misión: reducir el impacto ambiental de las organizaciones mediante soluciones medibles y sostenibles.</p>
+
+      <h2>Nuestra historia</h2>
+      <p>EcoGuard nació de la necesidad de ofrecer servicios técnicos y estratégicos para empresas que desean transitar hacia modelos más sostenibles sin perder competitividad.</p>
+
+      <h2>Equipo</h2>
+      <ul>
+        <li><strong>Osvaldo segovia Romero </strong> — Director técnica (Ingeniera ambiental)</li>
+        <li><strong>Raziel Flores Gutierrez</strong> — Consultor en sostenibilidad</li>
+        <li><strong>Gael Abelino Lopez Rivas</strong> — ComunicaciónESG</li>
+         <li><strong>Paola Yolotzin Colorado Navarro</strong> — Reportes ESG</li>
+          <li><strong>Fernando Angel Aguilar Garcia</strong> — Comunicación ESG</li>
+      </ul>
+
+      <h2>Valores</h2>
+      <p>Transparencia, rigor técnico y enfoque en resultados medibles.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-bottom">
+      <small>© EcoGuard. Todos los derechos reservados.</small>
+    </div>
+  </footer>
+</body>
+</html>
