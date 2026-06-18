@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!--
+    Tema del sitio: <Contaminación Ambiental>
+
+    Interacciones implementadas (sin JS):
+    - Menú responsive con checkbox-hack (abrir/cerrar menú).
+    - CTA que abre modal CSS-only usando :target.
+    - Tarjetas de servicios con <details>/<summary> para mostrar más info.
+    - Carrusel de testimonios simulado con radio buttons + labels (CSS-only).
+    - Formulario HTML5 con validación nativa; envío simulado apuntando a ancla #contacto-gracias para mostrar mensaje de éxito.
+    - Smooth scroll con scroll-behavior: smooth.
+    - Hover/focus, microinteracciones y animaciones CSS; respetando prefers-reduced-motion.
+    - Scroll reveal simulado con animaciones al cargar (sin IntersectionObserver).
+    
+    Limitaciones y notas (qué requiere JS/backend en producción):
+    - Envío real del formulario a servidor requiere backend o fetch/XHR (JS). Aquí se simula con ancla y mensaje CSS-only.
+    - Estados dinámicos (loading → success) se muestran como ejemplos estáticos con clases y animaciones; para cambios reales se necesita JS.
+    - Llamadas a APIs (mapas, geolocalización, envío de emails) no están implementadas; se documenta dónde integrarlas.
+    - Carrusel automático (autoplay) requiere JS; aquí es manual por accesibilidad y sin JS.
+    
+    Recomendaciones (no incluidas por restricción):
+    - Añadir sitemap.xml y robots.txt en el servidor.
+    - Implementar reCAPTCHA o validación server-side para el formulario.
+  -->
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EcoGuard - Soluciones sostenibles</title>
+  <meta name="description" content="EcoGuard - Sitio web sobre <Contaminación Ambiental>. Soluciones, servicios y recursos para reducir el impacto ambiental.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="EcoGuard - Soluciones sostenibles">
+  <meta property="og:description" content="EcoGuard - Sitio web sobre <Contaminación Ambiental>. Soluciones, servicios y recursos para reducir el impacto ambiental.">
+  <meta property="og:type" content="website">
+  <!-- Paleta y tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-topic="<Contaminación Ambiental>">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <!-- Logo SVG inline -->
+      <a href="index.html" class="logo" aria-label="EcoGuard - Inicio">
+        <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#0b6b4f"/><stop offset="1" stop-color="#2aa876"/></linearGradient></defs>
+          <circle cx="12" cy="12" r="10" fill="url(#g)"></circle>
+          <path d="M7 13c1-3 5-5 7-6 0 0-1 4-3 6-2 2-4 1-4 0z" fill="#fff" opacity="0.95"></path>
+        </svg>
+        <span class="brand">EcoGuard</span>
+      </a>
+
+      <!-- Responsive nav: checkbox-hack -->
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true">
+        <span class="hamburger" aria-hidden="true"></span>
+      </label>
+
+      <nav class="main-nav" role="navigation" aria-label="Menú principal">
+        <ul>
+          <li><a href="index.html" class="active" aria-current="page">Inicio</a></li>
+          <li><a href="about.html">Sobre</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<div class="marquesina-container" role="region" aria-label="Mensaje de bienvenida">
+  <div class="marquesina-content">
+    <span class="marquesina-item">¡Bienvenidos a EcoGuard! Comprometidos con un futuro sostenible y la reducción de la contaminación ambiental.</span>
+    <span class="marquesina-item">¡Bienvenidos a EcoGuard! Comprometidos con un futuro sostenible y la reducción de la contaminación ambiental.</span>
+  </div>
+</div>
+  <main id="main" class="site-main">
+    <!-- Hero -->
+     <section class="container" style="margin-top: 3rem; margin-bottom: 3rem; text-align: center;">
+  <h2 style="color: var(--color-primary); margin-bottom: 1.5rem;">Video Informativo</h2>
+  
+  <video controls width="100%" style="max-width: 720px; border-radius: var(--radius); box-shadow: 0 6px 20px rgba(11, 107, 79, 0.15);">
+    <source src="video1.mp4" type="video/mp4">
+    Tu navegador no soporta la reproducción de video.
+  </video>
+</section>
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-bg" role="img" aria-hidden="true">
+        <!-- Inline SVG decorativo -->
+        <svg viewBox="0 0 800 400" preserveAspectRatio="none" class="hero-svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="hg" x1="0" x2="1"><stop offset="0" stop-color="#e6f7f0"/><stop offset="1" stop-color="#f0fff6"/></linearGradient>
+          </defs>
+          <rect width="800" height="400" fill="url(#hg)"></rect>
+          <g fill="#cdebdc" opacity="0.6">
+            <circle cx="120" cy="80" r="60"></circle>
+            <circle cx="700" cy="300" r="90"></circle>
+          </g>
+        </svg>
+      </div>
+
+      <div class="container hero-content">
+        <h1 id="hero-title">EcoGuard</h1>
+        <p class="hero-subtitle">Sitio web sobre &lt;Contaminación Ambiental&gt;</p>
+        <p class="hero-lead">Soluciones corporativas y consultoría para medir, reducir y comunicar el impacto ambiental de su organización.</p>
+
+        <!-- CTA abre modal con :target -->
+        <a href="#modal-cta" class="btn btn-primary cta" role="button">Solicitar evaluación gratuita</a>
+      </div>
+    </section>
+
+    <!-- Modal CSS-only usando :target -->
+    <div id="modal-cta" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-panel">
+        <a href="#inicio" class="modal-close" aria-label="Cerrar diálogo">&times;</a>
+        <h2 id="modal-title">Evaluación gratuita</h2>
+        <p>Complete el formulario de contacto para solicitar una evaluación inicial gratuita de su huella ambiental.</p>
+        <form action="#contacto-gracias" method="get" class="modal-form" aria-describedby="modal-note">
+          <label for="m-name">Nombre</label>
+          <input id="m-name" name="name" type="text" required>
+          <label for="m-email">Email</label>
+          <input id="m-email" name="email" type="email" required>
+          <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+          <p id="modal-note" class="muted">Nota: en este prototipo el envío se simula; un backend real procesaría la solicitud.</p>
+        </form>
+      </div>
+    </div>
+    
+<section class="image-carousel container">
+  <div class="carousel-viewport">
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200&auto=format&fit=crop" alt="Paisaje 1">
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=1200&auto=format&fit=crop" alt="Bosque">
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200&auto=format&fit=crop" alt="Campo">
+      </div>
+      <div class="carousel-slide">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200&auto=format&fit=crop" alt="Paisaje 1">
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- Sobre nosotros -->
+    <section id="sobre" class="about container" aria-labelledby="about-title">
+      <h2 id="about-title">Sobre nosotros</h2>
+      <p class="lead"><strong>&lt;Contaminación Ambiental&gt;</strong> — Nuestro objetivo es ayudar a empresas a identificar y reducir su impacto ambiental mediante auditorías, planes de mitigación y comunicación transparente.</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>EcoGuard combina experiencia técnica y comunicación estratégica para transformar riesgos ambientales en oportunidades de eficiencia y reputación. Ofrecemos auditorías de emisiones, planes de reducción, formación y reportes de sostenibilidad.</p>
+          <ul>
+            <li>Auditorías de emisiones y residuos</li>
+            <li>Planes de reducción y compensación</li>
+            <li>Capacitación y comunicación ESG</li>
+          </ul>
+        </div>
+        <div class="about-figure" aria-hidden="true">
+          <!-- SVG ilustrativo -->
+          <svg viewBox="0 0 200 140" width="100%" height="auto" role="img" aria-hidden="true">
+            <rect x="0" y="0" width="200" height="140" rx="12" fill="#f6fffb"></rect>
+            <g transform="translate(20,20)" fill="#0b6b4f">
+              <rect x="0" y="40" width="20" height="40" rx="3"></rect>
+              <rect x="30" y="20" width="20" height="60" rx="3"></rect>
+              <rect x="60" y="0" width="20" height="80" rx="3"></rect>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="services container" aria-labelledby="services-title">
+      <h2 id="services-title">Servicios</h2>
+      <div class="cards">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Auditoría ambiental" loading="lazy">
+          <h3>Auditoría ambiental</h3>
+          <p>Medición de emisiones, consumo energético y gestión de residuos para identificar puntos de mejora.</p>
+          <details>
+            <summary class="details-summary">Más información</summary>
+            <div class="details-content">
+              <p>Incluye inventario de emisiones, análisis de procesos y recomendaciones técnicas con estimaciones de reducción y coste.</p>
+            </div>
+          </details>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Planes de mitigación" loading="lazy">
+          <h3>Planes de mitigación</h3>
+          <p>Diseño de estrategias para reducir emisiones y optimizar recursos con indicadores medibles.</p>
+          <details>
+            <summary class="details-summary">Más información</summary>
+            <div class="details-content">
+              <p>Plan de acción por fases, KPIs, cronograma y estimación de inversión y retorno.</p>
+            </div>
+          </details>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Comunicación y reportes" loading="lazy">
+          <h3>Comunicación y reportes</h3>
+          <p>Informes ESG, memorias de sostenibilidad y formación para equipos y stakeholders.</p>
+          <details>
+            <summary class="details-summary">Más información</summary>
+            <div class="details-content">
+              <p>Diseño de reportes alineados con estándares GRI y TCFD; formación para equipos internos.</p>
+            </div>
+          </details>
+        </article>
+      </div>
+    </section>
+<section id="galeria" class="gallery-section container" aria-labelledby="gallery-title">
+  <h2 id="gallery-title">Nuestros Proyectos</h2>
+  <p class="lead">Visualiza el impacto positivo de nuestras intervenciones ambientales.</p>
+  
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop" alt="Bosque preservado" loading="lazy">
+      <div class="gallery-overlay"><span>Preservación</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800&auto=format&fit=crop" alt="Energía solar" loading="lazy">
+      <div class="gallery-overlay"><span>Energía Limpia</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=800&auto=format&fit=crop" alt="Gestión de residuos" loading="lazy">
+      <div class="gallery-overlay"><span>Reciclaje</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=800&auto=format&fit=crop" alt="Reforestación" loading="lazy">
+      <div class="gallery-overlay"><span>Reforestación</span></div>
+    </div>
+  </div>
+</section>
+    <!-- Testimonios: carrusel simulado con radio buttons -->
+    <section id="testimonios" class="testimonials container" aria-labelledby="testimonials-title">
+      <h2 id="testimonials-title">Testimonios</h2>
+
+      <div class="carousel" role="region" aria-roledescription="carrusel" aria-label="Testimonios de clientes">
+        <!-- radios -->
+        <input type="radio" name="carousel" id="t1" checked>
+        <input type="radio" name="carousel" id="t2">
+        <input type="radio" name="carousel" id="t3">
+
+        <div class="slides">
+          <blockquote class="slide" aria-hidden="false">
+            <p>"EcoGuard nos ayudó a reducir un 30% nuestras emisiones en 12 meses. Profesionalismo y claridad."</p>
+            <cite>— Empresa A</cite>
+          </blockquote>
+
+          <blockquote class="slide" aria-hidden="true">
+            <p>"La auditoría fue exhaustiva y las recomendaciones prácticas. Recomendados."</p>
+            <cite>— Empresa B</cite>
+          </blockquote>
+
+          <blockquote class="slide" aria-hidden="true">
+            <p>"Excelente acompañamiento en la comunicación de nuestro primer reporte ESG."</p>
+            <cite>— Empresa C</cite>
+          </blockquote>
+        </div>
+
+        <div class="carousel-controls" role="tablist" aria-label="Navegación testimonios">
+          <label for="t1" class="dot" aria-label="Testimonio 1"></label>
+          <label for="t2" class="dot" aria-label="Testimonio 2"></label>
+          <label for="t3" class="dot" aria-label="Testimonio 3"></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact container" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contacto</h2>
+      <p class="lead">¿Listo para empezar? Complete el formulario y le contactaremos.</p>
+
+      <!-- Formulario HTML5: acción apunta a ancla para mostrar mensaje de éxito -->
+      <form class="contact-form" action="#contacto-gracias" method="post" novalidate aria-describedby="contact-desc">
+        <p id="contact-desc" class="muted">Los campos marcados con * son obligatorios.</p>
+
+        <label for="name">Nombre *</label>
+        <input id="name" name="name" type="text" required aria-required="true">
+
+        <label for="email">Email *</label>
+        <input id="email" name="email" type="email" required aria-required="true">
+
+        <label for="message">Mensaje *</label>
+        <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+
+        <!-- Note: aria-invalid and aria-describedby could be toggled by JS in producción.
+             Here we show an example of accessible attributes in comments. -->
+        <!-- Ejemplo (no activo): <input aria-invalid="true" aria-describedby="email-error"> -->
+
+        <button class="btn btn-primary" type="submit">Enviar</button>
+      </form>
+
+      <!-- Mensaje de éxito mostrado mediante ancla :target -->
+      <div id="contacto-gracias" class="contact-success" role="status" aria-live="polite">
+        <h3>Gracias</h3>
+        <p>Hemos recibido su mensaje. En un entorno real, el servidor confirmaría el envío y enviaría un correo de confirmación.</p>
+        <a href="#contacto" class="btn">Volver al formulario</a>
+      </div>
+    </section>
+    <!-- ===================================================
+     BLOQUE UNIFICADO: TABLÓN DE NOTAS DIARIO 
+     =================================================== -->
+<section id="bloc-notas" class="container" style="padding: 3rem 0; border-top: 1px solid rgba(11, 107, 79, 0.08);">
+  <h2>Tablón de Notas Diario</h2>
+  <p class="lead">Publica novedades, avisos o información relevante sobre el cuidado ambiental.</p>
+  
+  <!-- Formulario seguro (no se recarga) -->
+  <form id="note-form" class="contact-form" onsubmit="return false;">
+    <label for="note-author" style="font-weight: 600; display: block; margin-top: 0.5rem;">Tu Nombre o Rol *</label>
+    <input id="note-author" type="text" placeholder="Ej: Dueño, Visitante, María..." required style="width:100%; padding:.6rem; border-radius:8px; border:1px solid #e6efe9; margin-bottom: 1rem;">
+    
+    <label for="note-content" style="font-weight: 600; display: block; margin-top: 0.5rem;">Información / Mensaje *</label>
+    <textarea id="note-content" rows="3" placeholder="Escribe aquí los datos o actualizaciones del día..." required style="width:100%; padding:.6rem; border-radius:8px; border:1px solid #e6efe9; margin-bottom: 1rem;"></textarea>
+    
+    <!-- Botón de tipo button para evitar envíos falsos al servidor -->
+    <button class="btn btn-primary" type="button" id="btn-publicar">Publicar Nota</button>
+  </form>
+
+  <!-- Lista de Notas con rejilla forzada -->
+  <div id="notes-list" class="cards" style="margin-top: 2.5rem; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+    <!-- Aquí se inyectarán los mensajes dinámicamente -->
+  </div>
+</section>
+
+<script>
+  (function() {
+    // 1. Intentar cargar notas desde el navegador de forma segura
+    let notes = [];
+    try {
+      notes = JSON.parse(localStorage.getItem('ecoGuardNotes')) || [];
+    } catch (e) {
+      console.warn("El almacenamiento local está desactivado. Las notas serán temporales.", e);
+    }
+
+    // 2. Función limpia para renderizar las notas en pantalla
+    function renderNotes() {
+      const notesList = document.getElementById('notes-list');
+      if (!notesList) return;
+      
+      notesList.innerHTML = '';
+      
+      if (notes.length === 0) {
+        notesList.innerHTML = '<p class="muted" style="color: #6b7a73;">No hay notas publicadas hoy. ¡Sé el primero en aportar!</p>';
+        return;
+      }
+      
+      notes.forEach((note, index) => {
+        const noteCard = document.createElement('article');
+        noteCard.className = 'note-card';
+        
+        // Estilos de contingencia integrados para asegurar visualización correcta
+        noteCard.style.background = 'linear-gradient(135deg, #ffffff, #e6f7f0)';
+        noteCard.style.borderLeft = '5px solid #0b6b4f';
+        noteCard.style.padding = '1.5rem';
+        noteCard.style.borderRadius = '10px';
+        noteCard.style.position = 'relative';
+        noteCard.style.boxShadow = '0 6px 15px rgba(11, 107, 79, 0.04)';
+        
+        noteCard.innerHTML = `
+          <button type="button" class="btn-delete" data-index="${index}" title="Eliminar" style="position: absolute; top: 0.5rem; right: 0.5rem; background: transparent; border: none; color: #cc0000; cursor: pointer; font-weight: bold; font-size: 1.2rem; opacity: 0.7;">&times;</button>
+          <h4 style="margin: 0 0 0.5rem 0; color: #0b6b4f; font-size: 1.1rem;">📌 ${escapeHTML(note.author)}</h4>
+          <p style="margin: 0 0 1rem 0; color: #0b1a16; font-size: 0.95rem; white-space: pre-line;">${escapeHTML(note.content)}</p>
+          <span style="font-size: 0.8rem; color: #6b7a73; display: block; text-align: right;">${note.date}</span>
+        `;
+        notesList.appendChild(noteCard);
+      });
+
+      // Asignación segura de eventos para eliminar notas sin romper el entorno global
+      document.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const idx = this.getAttribute('data-index');
+          if(confirm("¿Estás seguro de que deseas eliminar esta nota?")) {
+            notes.splice(idx, 1);
+            saveNotes();
+            renderNotes();
+          }
+        });
+      });
+    }
+
+    // 3. Guardar cambios en el navegador
+    function saveNotes() {
+      try {
+        localStorage.setItem('ecoGuardNotes', JSON.stringify(notes));
+      } catch (e) {
+        console.error("No se pudo guardar en el navegador:", e);
+      }
+    }
+
+    // 4. Sanitizar texto contra código malicioso externo
+    function escapeHTML(str) {
+      return str.replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+      }[tag] || tag));
+    }
+
+    // 5. Inicializar disparadores al cargar la página
+    function init() {
+      const btnPublicar = document.getElementById('btn-publicar');
+      if (btnPublicar) {
+        btnPublicar.addEventListener('click', () => {
+          const authorInput = document.getElementById('note-author');
+          const contentInput = document.getElementById('note-content');
+          
+          if (!authorInput.value.trim() || !contentInput.value.trim()) {
+            alert("Por favor, rellena ambos campos antes de publicar.");
+            return;
+          }
+
+          const newNote = {
+            author: authorInput.value,
+            content: contentInput.value,
+            date: new Date().toLocaleString('es-ES', { 
+              day: '2-digit', month: '2-digit', year: 'numeric',
+              hour: '2-digit', minute: '2-digit'
+            })
+          };
+          
+          notes.unshift(newNote); // La más reciente va primero
+          saveNotes();
+          
+          // Limpiar el recuadro
+          authorInput.value = '';
+          contentInput.value = '';
+          
+          renderNotes();
+        });
+      }
+      renderNotes();
+    }
+
+    // Asegurar ejecución sin importar dónde se pegue el script
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div>
+        <h4>EcoGuard</h4>
+        <p>Dirección: Calle Falsa 123, Ciudad, País</p>
+        <p><a href="#">Aviso de privacidad</a></p>
+      </div>
+      <div>
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="about.html">Sobre</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Síguenos</h4>
+        <ul class="social">
+          <li><a href="#" aria-label="Twitter">Twitter</a></li>
+          <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+          <li><a href="#" aria-label="Facebook">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <small>© <span id="year"></span> EcoGuard. Todos los derechos reservados.</small>
+      <!-- Nota: el año podría actualizarse con JS; aquí se deja estático por restricción -->
+      <small class="muted">Recomendado: agregar sitemap.xml y robots.txt en el servidor.</small>
+    </div>
+  </footer>
+
+  <!--
+    Nota: No se incluyen scripts por restricción. Para producción:
+    - Añadir JS para mejorar accesibilidad del modal (gestión de foco), validación avanzada del formulario y envío AJAX.
+    - Añadir server-side endpoint para procesar el formulario y enviar confirmaciones por email.
+  -->
+</body>
+</html>
